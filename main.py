@@ -7,7 +7,6 @@ import turtle
 # timmy_the_turtle.color("red")
 
 timmy = Turtle()
-screen = Screen()
 timmy.shape("turtle")
 turtle.colormode(255)
 
@@ -16,45 +15,52 @@ def random_color():
     r = random.randint(0,255)
     g = random.randint(0, 255)
     b = random.randint(0, 255)
-    random_color = (r, g, b)
-    return random_color
+    color = (r, g, b)
+    return color
 
 
-def isInScreen(w, t):
-    leftBound = - w.window_width() / 2
-    rightBound = w.window_width() / 2
-    topBound = w.window_height() / 2
-    bottomBound = -w.window_height() / 2
+def draw_spirograph(size_of_gap):
+    for _ in range(int(360 / size_of_gap)):
+        timmy.color(random_color())
+        timmy.circle(100)
+        timmy.setheading(timmy.heading() + size_of_gap)
 
-    turtleX = t.xcor()
-    turtleY = t.ycor()
 
-    stillIn = True
-    if turtleX > rightBound or turtleX < leftBound:
-        stillIn = False
-    if turtleY > topBound or turtleY < bottomBound:
-        stillIn = False
+draw_spirograph(5)
 
-    return stillIn
+screen = Screen()
+screen.exitonclick()
+
+
+# def isInScreen(w, t):
+#     leftBound = - w.window_width() / 2
+#     rightBound = w.window_width() / 2
+#     topBound = w.window_height() / 2
+#     bottomBound = -w.window_height() / 2
+#
+#     turtleX = t.xcor()
+#     turtleY = t.ycor()
+#
+#     stillIn = True
+#     if turtleX > rightBound or turtleX < leftBound:
+#         stillIn = False
+#     if turtleY > topBound or turtleY < bottomBound:
+#         stillIn = False
+#
+#     return stillIn
 
 
 # colors = ["cyan", "pale green", "yellow", "orange red", "magenta", "medium purple", "dark salmon", "navajo white"]
-directions = [0, 90, 180, 270]
-timmy.pensize(10)
+# directions = [0, 90, 180, 270]
+# timmy.pensize(10)
 
-while isInScreen(screen, timmy):
-    # coin = random.randrange(0, 2)
-    # if coin == 0:
-    #     timmy.left(90)
-    # else:
-    #     timmy.right(90)
+# while isInScreen(screen, timmy):
+#
+#     timmy.setheading(random.choice(directions))
+#     timmy.color(random_color())
+#     timmy.forward(50)
 
-    timmy.setheading(random.choice(directions))
-    timmy.color(random_color())
-    timmy.speed("slow")
-    timmy.forward(50)
-
-screen.exitonclick()
+# screen.exitonclick()
 
 # colors = ["cyan", "pale green", "yellow", "orange red", "magenta", "medium purple", "dark salmon", "navajo white"]
 #
